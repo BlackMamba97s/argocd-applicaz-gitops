@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: argocd-applicaz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argocd-applicaz
+  template:
+    metadata:
+      labels:
+        app: argocd-applicaz
+        app.kubernetes.io/component: backstage
+        backstage.io/kubernetes-id: argocd
+    spec:
+      containers:
+        - name: argocd-applicaz
+          image: quay.io/quay.io/argoproj/argocd:v2.9.5/argocd-applicaz:latest
+          ports:
+            - name: http-80
+              containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'

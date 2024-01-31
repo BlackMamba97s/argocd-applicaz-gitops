@@ -1,0 +1,18 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: argocd-applicaz-gitops
+  description: Contains the ArgoCD manifests for argocd-applicaz
+  annotations:
+    argocd/app-name: argocd-applicaz-gitops
+    backstage.io/kubernetes-id: argocd-applicaz-gitops
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: BlackMamba97s/argocd-applicaz-gitops
+spec:
+  type: gitops
+  system: argocd
+  lifecycle: production
+  owner: default:
+  dependsOn:
+    - argocd
